@@ -54,7 +54,17 @@ latex.args <- function(x,...){
   x <- paste(x,collapse='')
   x
 }
+
+#' Calculate Row and Column Breaks
+#'
+#' Calculates row and column breaks by finding first elements among repeats.
+#' @export
+#' @seealso as.tabular
+#' @param x vector
+#' @param ... ignored
+#' @return integer
 breaks <- function(x,...)as.integer(runhead(x))[-1]
+
 runhead <- function (x) {
   n <- x != prev(x)
   if (length(n))
@@ -132,7 +142,7 @@ command <- function(x, options=NULL, args=NULL,depth=0){
 #' @param x character
 #' @param environment name of environment
 #' @param options list or vector
-#' @parem args list or vector
+#' @param args list or vector
 #' @param depth integer (extra spaces on the left)
 #' @return character
 #' @seealso command

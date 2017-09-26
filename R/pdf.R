@@ -4,19 +4,19 @@
 #' @seealso as.pdf.character
 #' @seealso as.pdf.document
 #' @seealso as.pdf.data.frame
+#' @param x object
+#' @param ... passed arguments
 #' @export
 as.pdf <- function(x,...)UseMethod('as.pdf')
 
 #' Coerce to PDF from Document
 #'
-#' Coerces to PDF from document. Makes a system call to 'pdflatex'.
+#' Coerces to PDF from document. Makes a system call to 'pdflatex'. Extra arguments ignored.
 #' @export
 #' @describeIn as.pdf document method
-#' @param x document
 #' @param stem the stem of a file name (no extension)
 #' @param dir output directory
 #' @param clean whether to delete system files after pdf creation
-#' @param ... ignored
 #' @seealso as.pdf.data.frame
 
 as.pdf.document <- function(
@@ -45,12 +45,11 @@ as.pdf.document <- function(
 
 #' Coerce to PDF from Character
 #'
-#' Coerces character to document and then to pdf.
+#' Coerces character to document and then to pdf. Extra arguments passed to \code{\link{as.document.character}} and \code{\link{as.pdf.document}}.
 #' @export
 #' @describeIn as.pdf character method
-#' @param x character
-#' @param stem the stem of a file name (no extension)
-#' @param ... passed to \code{\link{as.document.character}} and \code{\link{as.pdf.document}}
+#' @seealso tex2pdf
+#' @seealso viewtex
 as.pdf.character <- function(x,stem,...)as.pdf(as.document(x,...),stem=stem,...)
 
 
@@ -89,8 +88,6 @@ as.pdf.character <- function(x,stem,...)as.pdf(as.document(x,...),stem=stem,...)
 #' @param file.label optional text to preceed file if specified
 #' @param basefile if TRUE, strip path from file for display purposes
 #' @param tabularEnvironment default \code{tabular}; consider also \code{longtable}
-#' @param wide document width in mm
-#' @param long document lenth in mm
 #' @param wider additional document width in mm
 #' @param longer additional document lenth in mm
 #' @param preamble latex markup to include before beginning the document
@@ -106,9 +103,8 @@ as.pdf.character <- function(x,stem,...)as.pdf(as.document(x,...),stem=stem,...)
 #' @param stem the stem of a file name (no extension)
 #' @param dir output directory
 #' @param clean whether to delete system files after pdf creation
-#' @param onefile whether to combine tex snippets into a single file
 #' @param footnote.size font size for source and file attributions
-#' @param ... passed eventually to \code{\link{makePreamble}}  # as.tabular.data.frame, , as.document.data.frame, as.pdf.data.frame
+#' @param ... passed eventually to \code{\link{makePreamble}}
 
 as.pdf.data.frame <- function(
   x, # tabular.data.frame
@@ -161,7 +157,7 @@ as.pdf.data.frame <- function(
   stem, # as.pdf.document
   dir,# as.pdf.document
   clean,# as.pdf.document
-  ..., # passed to makePreamble
+  ... # passed to makePreamble
 ){
   doc <- as.document(
     x,
@@ -205,7 +201,6 @@ as.pdf.data.frame <- function(
 #'
 #' Converts TEX to PDF.  \code{tex2pdf} accepts the file names of tex fragments. It reads those fragments, wraps them like documents and makes pdf files.
 #' @export
-#' @describeIn as.pdf converter for tex fragments
 #' @param x vector of file names
 #' @param stem the stem of a file name (no extension)
 #' @param dir output directory
@@ -213,6 +208,7 @@ as.pdf.data.frame <- function(
 #' @param onefile whether to combine tex snippets into a single file
 #' @param ... passed to \code{\link{as.pdf.character}}
 #' @seealso as.pdf.character
+#' @seealso viewtex
 tex2pdf <- function(
   x,
   stem=NULL,
@@ -255,12 +251,13 @@ tex2pdf <- function(
 #'
 #' Renders and TEX files as PDF and opens them for viewing.
 #' @export
-#' @describeIn as.pdf
 #' @param x vector of file names
 #' @param delete whether temporary pdf (_doc.pdf) should persist
 #' @param latency how many seconds to wait before deleting temporary pdf
 #' @param ... passed to \code{\link{tex2pdf}}
 #' @seealso tex2pdf
+#' @seealso as.pdf.character
+#' @importFrom utils browseURL
 
 viewtex <- function(x,delete=TRUE,latency=1,...){
   newfiles <- tex2pdf(x,...)

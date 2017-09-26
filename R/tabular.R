@@ -1,19 +1,18 @@
 #' Coerce to tabular
 #'
 #' Coerces to tabular.  Generic, with methods for data.frame, table, and matrix.
-#' @param x object
+#' @param x object to be converted, typically data.frame (paths of tex files for \code{\link{tex2pdf}} and \code{\link{viewtex}})
 #' @param ... passed arguments
-#' @param export
-#' @param seealso as.ltable
+#' @export
+#' @seealso as.ltable
 as.tabular <- function(x,...)UseMethod('as.tabular')
 
 #' Coerce to tabular from data.frame
 #'
-#' Coerces to tabular from data.frame.
+#' Coerces to tabular from data.frame. Extra arguments passed to \code{\link{format.data.frame}}.
 #' @export
-#' @describeIn as.tabular
+#' @describeIn as.tabular data.frame method
 #' @return tabular
-#' @param x object to be converted, typically data.frame (paths of tex files for \code{tex2pdf} and \code{viewtex})
 #' @param rules numeric; will be recycled to length 3.  indicates number of horizontal lines above and below the header, and below the last row.
 #' @param walls numeric, recycled to length 2.  Number of vertical lines on left and right of table.
 #' @param grid logical, whether to have lines between rows and columns
@@ -28,6 +27,7 @@ as.tabular <- function(x,...)UseMethod('as.tabular')
 #' @param charjust default justification for character columns
 #' @param numjust default justification for numeric columns
 #' @param justify manual specification of column justifications: left, right, center, or decimal (vector as long as ncol(x))
+#' @param decimal.mark passed to \code{\link{format.data.frame}}
 #' @param colwidth manual specification of column width. (vector of length ncol(x).) Overrides \code{justify where not NA.}
 #' @param paralign used with colwidth to align paragraphs: top, middle, or bottom.
 #' @param na string to replace NA elements
@@ -40,34 +40,7 @@ as.tabular <- function(x,...)UseMethod('as.tabular')
 #' @param file.label optional text to preceed file if specified
 #' @param basefile if TRUE, strip path from file for display purposes
 #' @param tabularEnvironment default \code{tabular}; consider also \code{longtable}
-#' @param wide document width in mm
-#' @param long document lenth in mm
-#' @param wider additional document width in mm
-#' @param longer additional document lenth in mm
-#' @param preamble latex markup to include before beginning the document
-#' @param landscape if TRUE, default orientation is `landscape' not `portrait'
-#' @param geoLeft geometry package: left margin
-#' @param geoRight geometry package: right margin
-#' @param geoTop geometry package: top margin
-#' @param geoBottom geometry package: bottom margin
-#' @param documentclass document class command
-#' @param xcolorPackage xcolor package command
-#' @param geometryPackage geometry package command
-#' @param geometry geometry specification
-#' @param multirow multirow specification
-#' @param morePreamble additional preamble before beginning the document
-#' @param thispagestyle thispagestyle command
-#' @param pagestyle pagestyle command
-#' @param prolog latex markup to include before x
-#' @param epilog latex markup to include after x
-#' @param stem the stem of a file name (no extension)
-#' @param dir output directory
-#' @param clean whether to delete system files after pdf creation
-#' @param onefile whether to combine tex snippets into a single file
-#' @param delete whether temporary pdf (_doc.pdf) should persist
-#' @param latency how many seconds to wait before deleting temporary pdf
 #' @param footnote.size font size for source and file attributions
-#' @param ... passed to called functions
 #' @examples
 #' as.tabular(head(Theoph))
 #' as.tabular(table(1:3,4:6))
@@ -82,8 +55,8 @@ as.tabular.data.frame <- function(
   grid=FALSE,
   rowgroups=factor(rownames(x)),
   colgroups=factor(names(x)),
-  rowbreaks=if(grid)breaks(rowgroups,...)else 0,
-  colbreaks=if(grid)breaks(colgroups,...)else 0,
+  rowbreaks=if(grid)breaks(rowgroups)else 0,
+  colbreaks=if(grid)breaks(colgroups)else 0,
   rowgrouprule = 0,
   colgrouprule = 0,
   rowcolors=NULL,
@@ -91,6 +64,7 @@ as.tabular.data.frame <- function(
   charjust='left',
   numjust='right',
   justify=ifelse(sapply(x,is.numeric),numjust,charjust),
+  decimal.mark = getOption('OutDec'),
   colwidth=NA,
   paralign='top',
   na='',
@@ -188,7 +162,7 @@ as.tabular.data.frame <- function(
   header2 <- row2tabular(colgroups[colgroups!=''])
 
   sapply(names(x)[verbatim],function(nm)if(any(!is.na(x[[nm]]) & contains(escape,x[[nm]],fixed=TRUE)))warning(nm,'contains', escape))
-  x[] <- lapply(seq_along(x),function(col)if(decimal[[col]])align.decimal(x[[col]],...)else format(x[[col]],trim=trim,...))
+  x[] <- lapply(seq_along(x),function(col)if(decimal[[col]])align.decimal(x[[col]],decimal.mark = decimal.mark)else format(x[[col]],trim=trim,decimal.mark = decimal.mark,...))
   x[] <- lapply(seq_along(x),function(col)sub('^ *NA *$',na[[col]],x[[col]]))
   x[] <- lapply(seq_along(x),function(col)if(verbatim[[col]])paste0('\\verb',escape,x[[col]],escape)else x[[col]])
   x <- as.matrix(x)
@@ -248,7 +222,7 @@ as.tabular.data.frame <- function(
 as.tabular.table <- function(x, ...){
   if(length(dim(x)) != 2) stop('tabular.table only implemented for 2-dimensional tables')
   class(x) <- 'matrix'
-  tabular(x, ...)
+  as.tabular(x, ...)
 }
 
 #' Coerce to tabular from matrix
@@ -271,6 +245,6 @@ as.tabular.matrix <- function(x,...){
       y <- shuffle(y, rows) # move to front
     }
   }
-  tabular(y,...)
+  as.tabular(y,...)
 }
 

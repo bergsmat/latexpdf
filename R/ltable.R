@@ -8,7 +8,6 @@
 #' @seealso as.tabular
 as.ltable <- function(x,...)UseMethod('as.ltable')
 
-
 #' Coerce to LaTeX table from data.frame
 #'
 #' Coerces to LaTeX table from data.frame. See details.
@@ -16,16 +15,16 @@ as.ltable <- function(x,...)UseMethod('as.ltable')
 #' Converts data.frame to tabular, then wraps it in specified environments, then wraps result in a latex table environment.  Result is returned visibly, or if \code{file} is specified it is printed to file and returned invisibly.
 
 #' If \code{source} and \code{source.label} are defined, they will be printed in a tiny font immediately under the table (bound to the tabular element).  If \code{file} and \code{file.label} are defined as well, they will be printed (tiny) under source.  Set \code{source.label} to NULL to suppress embedding of \code{source}; set to empty string to suppress source label. Set \code{file.label} to NULL to suppress embedding of \code{file}; set to empty string to suppress file label. Note that \code{file} controls file destination, whether or not represented in the result.
+#'
+#' Extra arguments(\dots) are passed to \code{\link{as.tabular}}.
 
-#' \code{as.ltable.table} reclassifies its argument as matrix.  \code{as.ltable.matrix} tries to capture the column names as a caption, and (like \code{as.tabular.matrix}) converts its argument to data.frame, capturing rownames as a column in the first position if rownames are suitably named.
 
-#' @param x data.frame
-#' @param x data.frame
+
 #' @param caption full version of the caption
 #' @param cap short version of the caption, for list of tables
 #' @param cap.top Should caption be placed at the top, instead of bottom?
 #' @param label optional label
-#' @param options options for latex table environment
+#' @param options options for latex table environment, e.g. H or !htpb
 #' @param environments extra environments to nest between \sQuote{table} and \sQuote{tabular}
 #' @param source optional source attribution
 #' @param file optional file name
@@ -33,10 +32,10 @@ as.ltable <- function(x,...)UseMethod('as.ltable')
 #' @param file.label optional text to preceed file if specified
 #' @param basefile if TRUE, strip path from file for display purposes
 #' @param footnote.size font size for source and file, etc.
-#' @param \dots passed to \code{tabular}
-#' @value character
+#' @return character
+#' @export
 #' @seealso as.tabular
-#' @describeIn as.lable data.frame method
+#' @describeIn as.ltable data.frame method
 #' @examples
 #' as.ltable(head(Theoph))
 #' as.ltable(table(1:3,4:6))
@@ -47,7 +46,7 @@ as.ltable.data.frame <- function(
   cap=caption,
   cap.top=TRUE,
   label=NULL,
-  options='!htpb',
+  options='H',
   environments='center',
   source=NULL,
   file=NULL, ### file needs to support verbatim e.g. _
@@ -97,7 +96,7 @@ as.ltable.data.frame <- function(
 
 #' Coerce to ltable from table
 #'
-#' Coerces to ltable from table.
+#' Coerces to ltable from table, reclassifying its argument as matrix.
 #' @describeIn as.ltable table method
 #' @export
 as.ltable.table <- function(x, ...){
@@ -108,7 +107,7 @@ as.ltable.table <- function(x, ...){
 
 #' Coerce to ltable from matrix
 #'
-#' Coerces to ltable from matrix.
+#' Coerces to ltable from matrix; tires to capture the column names as a caption, and (like \code{as.tabular.matrix}) converts its argument to data.frame, capturing rownames as a column in the first position if rownames are suitably named.
 #' @describeIn as.ltable matrix method
 #' @export
 as.ltable.matrix <- function(x, caption = names(dimnames(x))[[2]],...){

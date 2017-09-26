@@ -3,7 +3,6 @@
 #' Makes a preamble for a LaTeX Document.
 #' @export
 #' @return character
-#' @param x object
 #' @param landscape if TRUE, default orientation is `landscape' not `portrait'
 #' @param wide document width in mm
 #' @param long document lenth in mm
@@ -60,8 +59,7 @@ as.document <- function(x,...)UseMethod('as.document')
 #' @param pagestyle pagestyle command
 #' @param prolog latex markup to include before x
 #' @param epilog latex markup to include after x
-#' @param ... ignored
-#' @documentIn as.document character method
+#' @describeIn as.document character method
 as.document.character <- function(
 	x,
 	preamble=makePreamble(...),
@@ -113,9 +111,9 @@ as.document.character <- function(
 #' @param trim passed to the format command: true by default, so that alignment is the responsibility of just the tabular environment arguments
 #' @param wider additional document width in mm
 #' @param longer additional document lenth in mm
-#' @param ... passed to \code{\link{as.tabular.data.frame}} and \code{\link{as.document.tabular}}
+#' @param ... passed to \code{\link{as.tabular.data.frame}} and \code{\link{as.document.character}}
 #' @seealso as.tabular.data.frame
-#' @seealso as.document.tabular
+#' @seealso as.document.character
 #' @seealso as.pdf.data.frame
 #' @examples
 #' as.document(head(Theoph))
@@ -148,7 +146,7 @@ as.document.data.frame <- function(
   walls <- rep(walls, length.out = 2)
   rowbreaks <- rep(rowbreaks, length.out = nrow(x) - 1)
   colbreaks <- rep(colbreaks, length.out = ncol(x) - 1)
-  text <- maxChar(do.call(paste,fixedwidth(x)))
+  text <- maxChar(do.call(paste,fixedwidth.data.frame(x)))
   bars <- c(walls,colbreaks)
   bars <- sum(bars) + sum(bars[bars>1]-1)*4
   #bars[bars>1] - 1 gives the number of inter-bar gaps, which are about 4 times as wide as a bar.

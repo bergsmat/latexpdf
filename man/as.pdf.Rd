@@ -8,7 +8,8 @@
 \usage{
 as.pdf(x, ...)
 
-\method{as.pdf}{document}(x, stem, dir = ".", clean = TRUE, ...)
+\method{as.pdf}{document}(x, stem = "latexpdf-doc", dir = ".",
+  clean = TRUE, ...)
 
 \method{as.pdf}{character}(x, stem, ...)
 }
@@ -38,15 +39,13 @@ Coerces character to document and then to pdf. Extra arguments passed to \code{\
 }}
 
 \seealso{
-as.pdf.character
+\code{\link{as.pdf.character}}
 
-as.pdf.document
+\code{\link{as.pdf.document}}
 
-as.pdf.data.frame
+\code{\link{as.pdf.data.frame}}
 
-as.pdf.data.frame
+\code{\link{tex2pdf}}
 
-tex2pdf
-
-viewtex
+\code{\link{viewtex}}
 }

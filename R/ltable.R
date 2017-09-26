@@ -5,7 +5,7 @@
 #' @param x object
 #' @param ... passed arguments
 #' @export
-#' @seealso as.tabular
+#' @seealso \code{\link{as.tabular}}
 as.ltable <- function(x,...)UseMethod('as.ltable')
 
 #' Coerce to LaTeX table from data.frame
@@ -34,7 +34,7 @@ as.ltable <- function(x,...)UseMethod('as.ltable')
 #' @param footnote.size font size for source and file, etc.
 #' @return character
 #' @export
-#' @seealso as.tabular
+#' @seealso \code{\link{as.tabular}}
 #' @describeIn as.ltable data.frame method
 #' @examples
 #' as.ltable(head(Theoph))

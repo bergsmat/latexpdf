@@ -21,13 +21,13 @@ wrap(x, environment, options = NULL, args = NULL, depth = 0)
 character
 }
 \description{
-Wrap text in a latex environment. \code{x} is wrapped in the specified environment, with options and aruments formatted appropriately.
+Wrap text in a latex environment. \code{x} is wrapped in the specified environment, with options and arguments formatted appropriately.
 }
 \examples{
 wrap('Hello','center')
 }
 \seealso{
-command
+\code{\link{command}}
 
-as.ltable.data.frame
+\code{\link{as.ltable.data.frame}}
 }

@@ -79,7 +79,7 @@ as.ltable(head(Theoph))
 as.ltable(table(1:3,4:6))
 }
 \seealso{
-as.tabular
+\code{\link{as.tabular}}
 
-as.tabular
+\code{\link{as.tabular}}
 }

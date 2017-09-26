@@ -1,15 +1,16 @@
 Package: latexpdf
 Type: Package
-Title: Create LaTeX Code and PDF Documents
+Title: Convert Tables to PDF
 Version: 0.1.0
 Author: Tim Bergsma
 Maintainer: Tim Bergsma <bergsmat@gmail.com>
-Description: Provides a low-level R interface for 
- creating LaTeX code, e.g. command() and a high-level 
- interface for creating PDF documents, e.g.
- as.pdf.data.frame(). Extensive customization is 
+Description: Converts table-like objects to stand-alone PDF.
+ Can be used to embed tables and arbitrary content in PDF 
+ documents. Provides a low-level R interface for creating LaTeX code, 
+ e.g. command() and a high-level interface for creating PDF 
+ documents, e.g. as.pdf.data.frame(). Extensive customization is 
  available via mid-level functions, e.g. as.tabular().
- Adapted from 'metrumrg' <http://r-forge.r-project.org/R/?group_id=1215>.
+     Adapted from 'metrumrg' <http://r-forge.r-project.org/R/?group_id=1215>.
  Requires a compatible installation of pdflatex, e.g. <https://miktex.org/>.
  See also 'package?latexpdf'.
 License: GPL-3

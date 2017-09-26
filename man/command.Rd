@@ -26,7 +26,7 @@ command('caption',options='short',args='long')
 
 }
 \seealso{
-wrap
+\code{\link{wrap}}
 
-as.ltable.data.frame
+\code{\link{as.ltable.data.frame}}
 }

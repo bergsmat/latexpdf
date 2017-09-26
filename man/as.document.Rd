@@ -20,7 +20,8 @@ as.document(x, ...)
   rowcolors = NULL, charjust = "left", numjust = "right",
   justify = ifelse(sapply(x, is.numeric), numjust, charjust), colwidth = NA,
   paralign = "top", na = "", verbatim = ifelse(sapply(x, is.numeric),
-  TRUE, FALSE), escape = "#", trim = TRUE, wider = 0, longer = 0, ...)
+  TRUE, FALSE), escape = "#", trim = TRUE, wide = NULL, long = NULL,
+  wider = 0, longer = 0, ...)
 }
 \arguments{
 \item{x}{object to be converted, typically data.frame (paths of tex files for \code{tex2pdf} and \code{viewtex})}
@@ -71,9 +72,13 @@ as.document(x, ...)
 
 \item{trim}{passed to the format command: true by default, so that alignment is the responsibility of just the tabular environment arguments}
 
-\item{wider}{additional document width in mm}
+\item{wide}{nominal page width in mm}
 
-\item{longer}{additional document lenth in mm}
+\item{long}{nominal page length in mm}
+
+\item{wider}{additional page width in mm}
+
+\item{longer}{additional page lenth in mm}
 }
 \value{
 character
@@ -100,9 +105,9 @@ Coerces to LaTeX document from data.frame.
 as.document(head(Theoph))
 }
 \seealso{
-as.tabular.data.frame
+\code{\link{as.tabular.data.frame}}
 
-as.document.character
+\code{\link{as.document.character}}
 
-as.pdf.data.frame
+\code{\link{as.pdf.data.frame}}
 }

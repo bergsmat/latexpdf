@@ -1,10 +1,10 @@
 #' Coerce to tabular
 #'
 #' Coerces to tabular.  Generic, with methods for data.frame, table, and matrix.
-#' @param x object to be converted, typically data.frame (paths of tex files for \code{\link{tex2pdf}} and \code{\link{viewtex}})
+#' @param x object
 #' @param ... passed arguments
 #' @export
-#' @seealso as.ltable
+#' @seealso \code{\link{as.ltable}}
 as.tabular <- function(x,...)UseMethod('as.tabular')
 
 #' Coerce to tabular from data.frame
@@ -28,7 +28,7 @@ as.tabular <- function(x,...)UseMethod('as.tabular')
 #' @param numjust default justification for numeric columns
 #' @param justify manual specification of column justifications: left, right, center, or decimal (vector as long as ncol(x))
 #' @param decimal.mark passed to \code{\link{format.data.frame}}
-#' @param colwidth manual specification of column width. (vector of length ncol(x).) Overrides \code{justify where not NA.}
+#' @param colwidth manual specification of column width. (vector of length ncol(x).) Overrides \code{justify} where not NA.
 #' @param paralign used with colwidth to align paragraphs: top, middle, or bottom.
 #' @param na string to replace NA elements
 #' @param verbatim whether to use verbatim environment for numeric fields.  Makes sense for decimal justification; interacts with \code{trim} and \code{justify}.
@@ -45,7 +45,7 @@ as.tabular <- function(x,...)UseMethod('as.tabular')
 #' as.tabular(head(Theoph))
 #' as.tabular(table(1:3,4:6))
 #' as.tabular(head(Theoph,source='foo/bar',footnote.size='huge'))
-#' \dontrun{as.pdf(head(Theoph),stem='theoph')}
+#' \dontrun{as.pdf(head(Theoph))}
 
 #'
 as.tabular.data.frame <- function(

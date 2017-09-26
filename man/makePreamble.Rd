@@ -14,14 +14,15 @@ makePreamble(landscape = FALSE, wide = if (landscape) 279.4 else 215.9,
   geoTop, bottom = geoBottom, right = geoRight), args = "geometry"),
   geometry = command("geometry", args = list(paste0("papersize=", paste0("{",
   wide, "mm", ",", long, "mm}")))), multirow = command("usepackage", args =
-  "multirow"), morePreamble = NULL, ...)
+  "multirow"), float = command("usepackage", args = "float"),
+  morePreamble = NULL, ...)
 }
 \arguments{
 \item{landscape}{if TRUE, default orientation is `landscape' not `portrait'}
 
-\item{wide}{document width in mm}
+\item{wide}{page width in mm}
 
-\item{long}{document lenth in mm}
+\item{long}{page lenth in mm}
 
 \item{geoLeft}{geometry package: left margin}
 
@@ -41,6 +42,8 @@ makePreamble(landscape = FALSE, wide = if (landscape) 279.4 else 215.9,
 
 \item{multirow}{multirow specification}
 
+\item{float}{float specification}
+
 \item{morePreamble}{additional preamble before beginning the document}
 
 \item{...}{ignored}
@@ -50,4 +53,7 @@ character
 }
 \description{
 Makes a preamble for a LaTeX Document.
+}
+\examples{
+makePreamble()
 }

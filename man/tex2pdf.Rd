@@ -22,8 +22,13 @@ tex2pdf(x, stem = NULL, dir = NULL, clean = TRUE, onefile = FALSE, ...)
 \description{
 Converts TEX to PDF.  \code{tex2pdf} accepts the file names of tex fragments. It reads those fragments, wraps them like documents and makes pdf files.
 }
+\examples{
+file <- file.path(tempdir(),'test.tex')
+writeLines(as.ltable(head(Theoph)), file)
+tex2pdf(file)
+}
 \seealso{
-as.pdf.character
+\code{\link{as.pdf.character}}
 
-viewtex
+\code{\link{viewtex}}
 }

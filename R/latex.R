@@ -59,7 +59,7 @@ latex.args <- function(x,...){
 #'
 #' Calculates row and column breaks by finding first elements among repeats.
 #' @export
-#' @seealso as.tabular
+#' @seealso \code{\link{as.tabular}}
 #' @param x vector
 #' @param ... ignored
 #' @return integer
@@ -121,8 +121,8 @@ padded <- function (x, width = 4, ...) sprintf(paste0("%0",width,".0f"), x)
 #' @param args vector or list
 #' @param depth integer
 #' @return character
-#' @seealso wrap
-#' @seealso as.ltable.data.frame
+#' @seealso \code{\link{wrap}}
+#' @seealso \code{\link{as.ltable.data.frame}}
 #' @export
 #' @examples
 #' command('caption',options='short',args='long')
@@ -137,7 +137,7 @@ command <- function(x, options=NULL, args=NULL,depth=0){
 
 #' Wrap Text in a Latex Environment
 #'
-#' Wrap text in a latex environment. \code{x} is wrapped in the specified environment, with options and aruments formatted appropriately.
+#' Wrap text in a latex environment. \code{x} is wrapped in the specified environment, with options and arguments formatted appropriately.
 #'
 #' @param x character
 #' @param environment name of environment
@@ -145,8 +145,8 @@ command <- function(x, options=NULL, args=NULL,depth=0){
 #' @param args list or vector
 #' @param depth integer (extra spaces on the left)
 #' @return character
-#' @seealso command
-#' @seealso as.ltable.data.frame
+#' @seealso \code{\link{command}}
+#' @seealso \code{\link{as.ltable.data.frame}}
 #' @export
 #' @examples
 #' wrap('Hello','center')

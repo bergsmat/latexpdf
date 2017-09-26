@@ -27,7 +27,7 @@ as.tabular(x, ...)
 \method{as.tabular}{matrix}(x, ...)
 }
 \arguments{
-\item{x}{object to be converted, typically data.frame (paths of tex files for \code{\link{tex2pdf}} and \code{\link{viewtex}})}
+\item{x}{object}
 
 \item{...}{passed arguments}
 
@@ -61,7 +61,7 @@ as.tabular(x, ...)
 
 \item{decimal.mark}{passed to \code{\link{format.data.frame}}}
 
-\item{colwidth}{manual specification of column width. (vector of length ncol(x).) Overrides \code{justify where not NA.}}
+\item{colwidth}{manual specification of column width. (vector of length ncol(x).) Overrides \code{justify} where not NA.}
 
 \item{paralign}{used with colwidth to align paragraphs: top, middle, or bottom.}
 
@@ -112,9 +112,9 @@ Coerces to tabular from matrix.
 as.tabular(head(Theoph))
 as.tabular(table(1:3,4:6))
 as.tabular(head(Theoph,source='foo/bar',footnote.size='huge'))
-\dontrun{as.pdf(head(Theoph),stem='theoph')}
+\dontrun{as.pdf(head(Theoph))}
 
 }
 \seealso{
-as.ltable
+\code{\link{as.ltable}}
 }

@@ -18,8 +18,15 @@ viewtex(x, delete = TRUE, latency = 1, ...)
 \description{
 Renders and TEX files as PDF and opens them for viewing.
 }
+\examples{
+file <- file.path(tempdir(),'test.tex')
+writeLines(as.ltable(head(Theoph)), file)
+\dontrun{
+viewtex(file)
+}
+}
 \seealso{
-tex2pdf
+\code{\link{tex2pdf}}
 
-as.pdf.character
+\code{\link{as.pdf.character}}
 }

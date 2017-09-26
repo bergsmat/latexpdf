@@ -18,5 +18,5 @@ integer
 Calculates row and column breaks by finding first elements among repeats.
 }
 \seealso{
-as.tabular
+\code{\link{as.tabular}}
 }

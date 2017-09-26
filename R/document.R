@@ -4,8 +4,8 @@
 #' @export
 #' @return character
 #' @param landscape if TRUE, default orientation is `landscape' not `portrait'
-#' @param wide document width in mm
-#' @param long document lenth in mm
+#' @param wide page width in mm
+#' @param long page lenth in mm
 #' @param geoLeft geometry package: left margin
 #' @param geoRight geometry package: right margin
 #' @param geoTop geometry package: top margin
@@ -15,8 +15,11 @@
 #' @param geometryPackage geometry package command
 #' @param geometry geometry specification
 #' @param multirow multirow specification
+#' @param float float specification
 #' @param morePreamble additional preamble before beginning the document
 #' @param ... ignored
+#' @examples
+#' makePreamble()
 
 makePreamble <- function(
 	landscape=FALSE,
@@ -31,6 +34,7 @@ makePreamble <- function(
     	geometryPackage = command('usepackage',options=list(left=geoLeft,top=geoTop,bottom=geoBottom,right=geoRight),args='geometry'),
 	geometry = command('geometry',args=list(paste0('papersize=',paste0('{',wide,'mm',',',long,'mm}')))),
 	multirow = command('usepackage',args='multirow'),
+	float = command('usepackage',args='float'),
 	morePreamble = NULL,
 	...
 )c(
@@ -39,6 +43,7 @@ makePreamble <- function(
 	geometryPackage,
 	geometry,
 	multirow,
+	float,
 	morePreamble
 )
 
@@ -109,12 +114,14 @@ as.document.character <- function(
 #' @param verbatim whether to use verbatim environment for numeric fields.  Makes sense for decimal justification; interacts with \code{trim} and \code{justify}.
 #' @param escape symbol used by `verb' command as delimiter.  A warning is issued if it is found in non-NA text.
 #' @param trim passed to the format command: true by default, so that alignment is the responsibility of just the tabular environment arguments
-#' @param wider additional document width in mm
-#' @param longer additional document lenth in mm
+#' @param wide nominal page width in mm
+#' @param long nominal page length in mm
+#' @param wider additional page width in mm
+#' @param longer additional page lenth in mm
 #' @param ... passed to \code{\link{as.tabular.data.frame}} and \code{\link{as.document.character}}
-#' @seealso as.tabular.data.frame
-#' @seealso as.document.character
-#' @seealso as.pdf.data.frame
+#' @seealso \code{\link{as.tabular.data.frame}}
+#' @seealso \code{\link{as.document.character}}
+#' @seealso \code{\link{as.pdf.data.frame}}
 #' @examples
 #' as.document(head(Theoph))
 
@@ -137,8 +144,10 @@ as.document.data.frame <- function(
 	  verbatim = ifelse(sapply(x, is.numeric), TRUE, FALSE),
 	  escape = "#",
 	  trim = TRUE,
-	  wider=0,
-	  longer=0,
+	  wide = NULL,
+	  long = NULL,
+	  wider = 0,
+	  longer = 0,
 	  ...
 ){
   stopifnot(inherits(x,'data.frame'))
@@ -152,13 +161,13 @@ as.document.data.frame <- function(
   #bars[bars>1] - 1 gives the number of inter-bar gaps, which are about 4 times as wide as a bar.
   #same logic applies to lines.
 
-  wide <- text * 2.36 + bars*0.14 + 5.9 + wider
+  if(is.null(wide))wide <- text * 2.36 + bars*0.14 + 5.9 + wider
 
   rows <- 1+nrow(x)
   lines <- c(rules,rowbreaks)
   lines <- sum(lines) + sum(lines[lines>1]-1)*4
 
-  long <- rows*4.21 + lines*0.16 + 2 + longer
+  if(is.null(long))long <- rows*4.21 + lines*0.16 + 2 + longer
 
   tab <- as.tabular(
           x=x,

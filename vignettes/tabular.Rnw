@@ -7,7 +7,7 @@
 \lstset{basicstyle=\ttfamily\small , breaklines}
 \usepackage[left=3cm,top=3cm,bottom=3cm, right=3cm,includehead,includefoot]{geometry}
 \usepackage{fancyhdr,lastpage}
-\pagestyle{fancy}
+%\pagestyle{fancy}
 \cfoot{Page \thepage\ of \pageref{LastPage}}
 \fancyhfoffset{.25in}
 \renewcommand{\headrulewidth}{0.25pt}

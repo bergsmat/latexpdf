@@ -16,6 +16,7 @@
 #' @param geometry geometry specification
 #' @param multirow multirow specification
 #' @param float float specification
+#' @param longtable longtable specification
 #' @param morePreamble additional preamble before beginning the document
 #' @param ... ignored
 #' @examples
@@ -35,6 +36,7 @@ makePreamble <- function(
 	geometry = command('geometry',args=list(paste0('papersize=',paste0('{',wide,'mm',',',long,'mm}')))),
 	multirow = command('usepackage',args='multirow'),
 	float = command('usepackage',args='float'),
+	longtable = command('usepackage',args='longtable'),
 	morePreamble = NULL,
 	...
 )c(
@@ -44,6 +46,7 @@ makePreamble <- function(
 	geometry,
 	multirow,
 	float,
+	longtable,
 	morePreamble
 )
 

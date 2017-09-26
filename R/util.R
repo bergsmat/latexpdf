@@ -125,9 +125,7 @@ nth <-
     where[unique(nth(where = where, within = within, n = 1))] <- FALSE
     nth(x = x, where = where, within = within, n = n - 1)
   }
-maxChar <-
-function (x)
-{
+maxChar <-function (x){
     x <- as.character(x)
     len <- nchar(x)
     max(len)
@@ -141,3 +139,4 @@ function (x, ...)
     names(x) <- x[1, ]
     x[-1, , drop = FALSE]
 }
+

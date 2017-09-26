@@ -1,6 +1,6 @@
 #' Coerce to PDF from Data Frame
 #'
-#' Coerces data.frame to document and then to pdf. Extra arguments are passed to \code{\link{makePreamble}}.
+#' Coerces data.frame to document and then to pdf. Extra arguments are passed to \code{\link{makePreamble}}.  \code{\link{as.document.data.frame}} will try to guess an appropriate width and length( \code{wide}, \code{long}) for the page, but you may need something \code{wider} or \code{longer}, especially if you adjust aesthetics.  Negative values for \code{wider} and \code{longer} are meaningful.
 #' @export
 #' @seealso \code{\link{as.pdf.character}}
 #' @seealso \code{\link{as.pdf.document}}
@@ -16,7 +16,7 @@
 #' @param colbreaks numeric: a manual way to specify numbers of lines between columns (ignores grid and colgroups)
 #' @param rowgrouprule number of lines to set off row group column, if rowgroups supplied as character
 #' @param colgrouprule number of lines to set off col group header, if colgroups supplied as character
-#' @param rowcolors character vector of color names, recycled as necessary to color all rows (NULL: no color)
+#' @param rowcolors character vector of color names, recycled as necessary to color all rows (NULL: no color); not compatible with rowgroups
 #' @param rowgrouplabel character string (at least one character) to label rowgroup column
 #' @param charjust default justification for character columns
 #' @param numjust default justification for numeric columns

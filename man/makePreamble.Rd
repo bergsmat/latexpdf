@@ -15,6 +15,7 @@ makePreamble(landscape = FALSE, wide = if (landscape) 279.4 else 215.9,
   geometry = command("geometry", args = list(paste0("papersize=", paste0("{",
   wide, "mm", ",", long, "mm}")))), multirow = command("usepackage", args =
   "multirow"), float = command("usepackage", args = "float"),
+  longtable = command("usepackage", args = "longtable"),
   morePreamble = NULL, ...)
 }
 \arguments{
@@ -43,6 +44,8 @@ makePreamble(landscape = FALSE, wide = if (landscape) 279.4 else 215.9,
 \item{multirow}{multirow specification}
 
 \item{float}{float specification}
+
+\item{longtable}{longtable specification}
 
 \item{morePreamble}{additional preamble before beginning the document}
 

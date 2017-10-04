@@ -12,14 +12,14 @@ as.png <- function(x,...)UseMethod('as.png')
 
 #' Coerce to PNG from Document
 #'
-#' Coerces to PNG from document. Makes a system call to 'pdflatex', converts resulting file to png. Extra arguments passed to \code{\link{as.pdf.document}} and \code{\link{ghostconvert}}.
+#' Coerces to PNG from document. Makes a system call to 'pdflatex', converts resulting file to PNG. Extra arguments passed to \code{\link{as.pdf.document}} and \code{\link{ghostconvert}}.
 #' @export
 #' @describeIn as.png document method
 #' @param stem the stem of a file name (no extension)
 #' @param dir output directory
-#' @param clean whether to delete system files after png creation
+#' @param clean whether to delete system files after PNG creation
 #' @param replace whether to delete the pdf file
-#' @param multipage whether to convert multiple pages of the pdf
+#' @param multipage whether to convert multiple pages of the PDF
 #' @seealso as.pdf.document
 #' @seealso ghostconvert
 
@@ -38,7 +38,7 @@ as.png.document <- function(
 
 #' Coerce to PNG from Character
 #'
-#' Coerces character to document, pdf, and then png. Extra arguments passed to \code{\link{as.document.character}} and \code{\link{as.png.document}}.
+#' Coerces character to document, PDF, and then PNG. Extra arguments passed to \code{\link{as.document.character}} and \code{\link{as.png.document}}.
 #' @export
 #' @describeIn as.png character method
 #' @seealso \code{\link{tex2png}}
@@ -49,14 +49,14 @@ as.png.character <- function(x,stem,...)as.png(as.document(x,...),stem=stem,...)
 
 #' Convert TEX to PNG
 #'
-#' Converts TEX to PNG.  \code{tex2png} accepts the file names of tex fragments. It reads those fragments, wraps them like documents and makes png files (converted from pdf files).
+#' Converts TEX to PNG.  \code{tex2png} accepts the file names of TEX fragments. It reads those fragments, wraps them like documents and makes PNG files (converted from PDF files).
 #' @export
 #' @param x vector of file names
 #' @param stem the stem of a file name (no extension)
 #' @param dir output directory
-#' @param clean whether to delete system files after png creation
+#' @param clean whether to delete system files after PNG creation
 #' @param onefile whether to combine tex snippets into a single file
-#' @param replace whether to delete the intermediate pdf files
+#' @param replace whether to delete the intermediate PDF files
 #' @param ... passed to \code{\link{tex2pdf}} and \code{\link{ghostconvert}}
 #' @seealso \code{\link{as.png.character}}
 #' @seealso \code{\link{viewtex}}
@@ -82,7 +82,7 @@ tex2png <- function(
 
 #' Call Ghostscript.
 #'
-#' Call ghostscript, converting by default from pdf to png.
+#' Call Ghostscript, converting by default from PDF to PNG.
 #' @export
 #' @importFrom tools find_gs_cmd
 #' @param x path for file to be converted
@@ -95,7 +95,7 @@ tex2png <- function(
 #' @param multifix a filename suffix when converting multiple pages
 #' @param suffix file extension for output
 #' @param antialias font antialiasing
-#' @param resolution png pixel resolution
+#' @param resolution raster image resolution
 #' @param replace whether to delete \code{x} if successful
 #' @param other other arguments to ghostscript
 #' @param ... ignored
@@ -145,7 +145,7 @@ ghostconvert <- function(
 #' @seealso \code{\link{as.pdf.data.frame}}
 #' @seealso \code{\link{ghostconvert}}
 #' @param x data.frame
-#' @param replace whether to delete the intermediate pdf if successful
+#' @param replace whether to delete the intermediate PDF if successful
 #' @param ... passed to \code{\link{as.pdf.data.frame}} and to \code{\link{ghostconvert}}
 #' @return path to the file created
 #' @examples

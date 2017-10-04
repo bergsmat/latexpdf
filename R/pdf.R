@@ -50,7 +50,7 @@ bad <- inherits(result,'try-error') || !file.exists(expects)
 
 #' Coerce to PDF from Character
 #'
-#' Coerces character to document and then to pdf. Extra arguments passed to \code{\link{as.document.character}} and \code{\link{as.pdf.document}}.
+#' Coerces character to document and then to PDF. Extra arguments passed to \code{\link{as.document.character}} and \code{\link{as.pdf.document}}.
 #' @export
 #' @describeIn as.pdf character method
 #' @seealso \code{\link{tex2pdf}}
@@ -60,13 +60,13 @@ as.pdf.character <- function(x,stem,...)as.pdf(as.document(x,...),stem=stem,...)
 
 #' Convert TEX to PDF
 #'
-#' Converts TEX to PDF.  \code{tex2pdf} accepts the file names of tex fragments. It reads those fragments, wraps them like documents and makes pdf files.
+#' Converts TEX to PDF.  \code{tex2pdf} accepts the file names of TEX fragments. It reads those fragments, wraps them like documents and makes PDF files.
 #' @export
 #' @param x vector of file names
 #' @param stem the stem of a file name (no extension)
 #' @param dir output directory
-#' @param clean whether to delete system files after pdf creation
-#' @param onefile whether to combine tex snippets into a single file
+#' @param clean whether to delete system files after PDF creation
+#' @param onefile whether to combine TEX snippets into a single file
 #' @param ... passed to \code{\link{as.pdf.character}}
 #' @seealso \code{\link{as.pdf.character}}
 #' @seealso \code{\link{viewtex}}
@@ -120,7 +120,7 @@ tex2pdf <- function(
 #' @export
 #' @param x vector of file names
 #' @param delete whether temporary pdf (_doc.pdf) should persist
-#' @param latency how many seconds to wait before deleting temporary pdf,
+#' @param latency how many seconds to wait before deleting temporary PDF,
 #' @param png view as png instead of pdf
 #' @param ... passed to \code{\link{tex2pdf}}
 #' @seealso \code{\link{tex2pdf}}

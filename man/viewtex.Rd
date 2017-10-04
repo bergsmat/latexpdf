@@ -4,14 +4,16 @@
 \alias{viewtex}
 \title{Render and View TEX Files}
 \usage{
-viewtex(x, delete = TRUE, latency = 1, ...)
+viewtex(x, delete = TRUE, latency = 1, png = FALSE, ...)
 }
 \arguments{
 \item{x}{vector of file names}
 
 \item{delete}{whether temporary pdf (_doc.pdf) should persist}
 
-\item{latency}{how many seconds to wait before deleting temporary pdf}
+\item{latency}{how many seconds to wait before deleting temporary pdf,}
+
+\item{png}{view as png instead of pdf}
 
 \item{...}{passed to \code{\link{tex2pdf}}}
 }
@@ -23,10 +25,13 @@ file <- file.path(tempdir(),'test.tex')
 writeLines(as.ltable(head(Theoph)), file)
 \dontrun{
 viewtex(file)
+viewtex(file, png = TRUE, gs_cmd = 'mgs')
 }
 }
 \seealso{
 \code{\link{tex2pdf}}
+
+\code{\link{tex2png}}
 
 \code{\link{as.pdf.character}}
 }

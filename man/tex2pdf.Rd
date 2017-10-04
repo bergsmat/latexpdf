@@ -19,6 +19,9 @@ tex2pdf(x, stem = NULL, dir = NULL, clean = TRUE, onefile = FALSE, ...)
 
 \item{...}{passed to \code{\link{as.pdf.character}}}
 }
+\value{
+invisible vector of paths to created files
+}
 \description{
 Converts TEX to PDF.  \code{tex2pdf} accepts the file names of tex fragments. It reads those fragments, wraps them like documents and makes pdf files.
 }

@@ -6,6 +6,7 @@
 #' @seealso \code{\link{as.pdf.document}}
 #' @seealso \code{\link{as.document.data.frame}}
 #' @seealso \code{\link{as.tabular.data.frame}}
+#' @seealso \code{\link{as.png.data.frame}}
 #' @param x data.frame
 #' @param rules numeric; will be recycled to length 3.  indicates number of horizontal lines above and below the header, and below the last row.
 #' @param walls numeric, recycled to length 2.  Number of vertical lines on left and right of table.

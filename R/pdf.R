@@ -4,6 +4,7 @@
 #' @seealso \code{\link{as.pdf.character}}
 #' @seealso \code{\link{as.pdf.document}}
 #' @seealso \code{\link{as.pdf.data.frame}}
+#' @seealso \code{\link{as.png}}
 #' @param x object
 #' @param ... passed arguments
 #' @export
@@ -17,6 +18,7 @@ as.pdf <- function(x,...)UseMethod('as.pdf')
 #' @param stem the stem of a file name (no extension)
 #' @param dir output directory
 #' @param clean whether to delete system files after pdf creation
+#' @return the output file path (invisible)
 
 as.pdf.document <- function(
   x,
@@ -31,15 +33,19 @@ as.pdf.document <- function(
     stem <- sub('\\.pdf$','',stem,ignore.case=TRUE)
   }
   outfile <- paste0(stem,'.tex')
+  hopeful <- paste0(stem,'.pdf')
   outpath <- file.path(dir,outfile)
+  expects <- file.path(dir,hopeful)
   writeLines(x,outpath)
   cmd <- paste0('pdflatex -output-directory=',dir,' ',outpath)
-  result <- system(cmd)
+  result <- tryCatch(error = function(e)e, system(cmd))
   variants <- paste0(stem,c('.tex','.log','.aux','.out'))
   possibles <- file.path(dir,variants)
   actuals <- possibles[file.exists(possibles)]
   if(clean)file.remove(actuals)
-  invisible(result)
+bad <- inherits(result,'try-error') || !file.exists(expects)
+  if(bad) stop('could not make ', expects)
+  invisible(expects)
 }
 
 #' Coerce to PDF from Character
@@ -64,6 +70,8 @@ as.pdf.character <- function(x,stem,...)as.pdf(as.document(x,...),stem=stem,...)
 #' @param ... passed to \code{\link{as.pdf.character}}
 #' @seealso \code{\link{as.pdf.character}}
 #' @seealso \code{\link{viewtex}}
+#' @return invisible vector of paths to created files
+#'
 #' @examples
 #' file <- file.path(tempdir(),'test.tex')
 #' writeLines(as.ltable(head(Theoph)), file)
@@ -112,9 +120,11 @@ tex2pdf <- function(
 #' @export
 #' @param x vector of file names
 #' @param delete whether temporary pdf (_doc.pdf) should persist
-#' @param latency how many seconds to wait before deleting temporary pdf
+#' @param latency how many seconds to wait before deleting temporary pdf,
+#' @param png view as png instead of pdf
 #' @param ... passed to \code{\link{tex2pdf}}
 #' @seealso \code{\link{tex2pdf}}
+#' @seealso \code{\link{tex2png}}
 #' @seealso \code{\link{as.pdf.character}}
 #' @importFrom utils browseURL
 #' @examples
@@ -122,10 +132,11 @@ tex2pdf <- function(
 #' writeLines(as.ltable(head(Theoph)), file)
 #' \dontrun{
 #' viewtex(file)
+#' viewtex(file, png = TRUE, gs_cmd = 'mgs')
 #' }
 
-viewtex <- function(x,delete=TRUE,latency=1,...){
-  newfiles <- tex2pdf(x,...)
+viewtex <- function(x,delete=TRUE,latency=1, png=FALSE,...){
+  newfiles <- if(png)tex2png(x,...) else tex2pdf(x,...)
   sapply(newfiles,browseURL)
   if(delete)Sys.sleep(latency)
   if(delete)sapply(newfiles,unlink)

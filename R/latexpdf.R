@@ -4,7 +4,7 @@
 #' LaTeX techniques; this is especially useful for making stand-alone
 #' PDF images of data.frames.  For report-length PDF, some flavor
 #' of markup or markdown (e.g. Sweave, Rmarkdown) is probably a more
-#' attractive mechanism for the main document; still, \pkg{latexpdf}
+#' attractive mechanism for the main document; in this context, \pkg{latexpdf}
 #' can be used to embed tables with the same aesthetics as stand-alone
 #' versions.
 #'
@@ -22,13 +22,21 @@
 #' for a demonstration of options.
 #'
 #' While \pkg{latexpdf} can be useful for low-level operations, creating PDF
-#' documents directly is more powerful.
-#' Pre-generated LaTeX code can be inserted into literate programming
-#' documents (Sweave, Rmarkdown) or can be auto-converted to stand-alone
-#' PDF documents (see especially '?as.pdf.data.frame'). Functions tex2pdf()
-#' and viewtex() create and visualize arbitrary tex code by converting to
+#' documents directly is more powerful. Pre-generated LaTeX code can be inserted
+#' into literate programming documents (Sweave, Rmarkdown) or can be auto-converted
+#' to stand-alone PDF documents (see especially '?as.pdf.data.frame'). Functions
+#' tex2pdf() and viewtex() create and visualize arbitrary tex code by converting to
 #' PDF documents. They rely on as.pdf.document(), which places a system call
 #' to 'pdflatex'.
+#'
+#' Some file formats, such as MS Word and Powerpoint, cannot embed PDF images.
+#' Experimental support is available for converting PDF to PNG.  For example,
+#' if you switch from Rmarkdown's pdf_document() to word_document(), you
+#' may want to switch from as.pdf() to as.png() for your images.  PNG
+#' functionality relies requires the local Ghostscript installation (see
+#' '?ghostconvert') which is almost certainly present if 'pdflatex' is.
+#' Ghostscript may be hard to find. See '?tools::find_gs_cmd'; for Miktex
+#' installations, consider 'find_gs_cmd(gs_cmd = 'mgs')'.
 #'
 #' @docType package
 #' @name latexpdf-package

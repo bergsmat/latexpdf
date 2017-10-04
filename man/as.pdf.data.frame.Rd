@@ -124,4 +124,6 @@ Coerces data.frame to document and then to pdf. Extra arguments are passed to \c
 \code{\link{as.document.data.frame}}
 
 \code{\link{as.tabular.data.frame}}
+
+\code{\link{as.png.data.frame}}
 }

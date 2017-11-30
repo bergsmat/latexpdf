@@ -111,7 +111,7 @@
 \item{...}{passed eventually to \code{\link{makePreamble}}}
 }
 \description{
-Coerces data.frame to document and then to pdf. Extra arguments are passed to \code{\link{makePreamble}}.  \code{\link{as.document.data.frame}} will try to guess an appropriate width and length( \code{wide}, \code{long}) for the page, but you may need something \code{wider} or \code{longer}, especially if you adjust aesthetics.  Negative values for \code{wider} and \code{longer} are meaningful.
+Coerces data.frame to document and then to PDF. Extra arguments are passed to \code{\link{makePreamble}}.  \code{\link{as.document.data.frame}} will try to guess an appropriate width and length( \code{wide}, \code{long}) for the page, but you may need something \code{wider} or \code{longer}, especially if you adjust aesthetics.  Negative values for \code{wider} and \code{longer} are meaningful.
 }
 \examples{
 \dontrun{as.pdf(head(Theoph))}

@@ -22,18 +22,18 @@ as.png(x, ...)
 
 \item{dir}{output directory}
 
-\item{clean}{whether to delete system files after png creation}
+\item{clean}{whether to delete system files after PNG creation}
 
 \item{replace}{whether to delete the pdf file}
 
-\item{multipage}{whether to convert multiple pages of the pdf}
+\item{multipage}{whether to convert multiple pages of the PDF}
 }
 \description{
 Coerces to PNG. Generic, with methods for character, document, and data.frame.
 
-Coerces to PNG from document. Makes a system call to 'pdflatex', converts resulting file to png. Extra arguments passed to \code{\link{as.pdf.document}} and \code{\link{ghostconvert}}.
+Coerces to PNG from document. Makes a system call to 'pdflatex', converts resulting file to PNG. Extra arguments passed to \code{\link{as.pdf.document}} and \code{\link{ghostconvert}}.
 
-Coerces character to document, pdf, and then png. Extra arguments passed to \code{\link{as.document.character}} and \code{\link{as.png.document}}.
+Coerces character to document, PDF, and then PNG. Extra arguments passed to \code{\link{as.document.character}} and \code{\link{as.png.document}}.
 }
 \section{Methods (by class)}{
 \itemize{

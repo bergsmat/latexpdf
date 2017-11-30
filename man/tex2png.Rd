@@ -14,16 +14,16 @@ tex2png(x, stem = NULL, dir = NULL, clean = TRUE, onefile = FALSE,
 
 \item{dir}{output directory}
 
-\item{clean}{whether to delete system files after png creation}
+\item{clean}{whether to delete system files after PNG creation}
 
 \item{onefile}{whether to combine tex snippets into a single file}
 
-\item{replace}{whether to delete the intermediate pdf files}
+\item{replace}{whether to delete the intermediate PDF files}
 
 \item{...}{passed to \code{\link{tex2pdf}} and \code{\link{ghostconvert}}}
 }
 \description{
-Converts TEX to PNG.  \code{tex2png} accepts the file names of tex fragments. It reads those fragments, wraps them like documents and makes png files (converted from pdf files).
+Converts TEX to PNG.  \code{tex2png} accepts the file names of TEX fragments. It reads those fragments, wraps them like documents and makes PNG files (converted from PDF files).
 }
 \examples{
 \dontrun{

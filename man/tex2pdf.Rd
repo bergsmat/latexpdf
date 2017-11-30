@@ -13,9 +13,9 @@ tex2pdf(x, stem = NULL, dir = NULL, clean = TRUE, onefile = FALSE, ...)
 
 \item{dir}{output directory}
 
-\item{clean}{whether to delete system files after pdf creation}
+\item{clean}{whether to delete system files after PDF creation}
 
-\item{onefile}{whether to combine tex snippets into a single file}
+\item{onefile}{whether to combine TEX snippets into a single file}
 
 \item{...}{passed to \code{\link{as.pdf.character}}}
 }
@@ -23,7 +23,7 @@ tex2pdf(x, stem = NULL, dir = NULL, clean = TRUE, onefile = FALSE, ...)
 invisible vector of paths to created files
 }
 \description{
-Converts TEX to PDF.  \code{tex2pdf} accepts the file names of tex fragments. It reads those fragments, wraps them like documents and makes pdf files.
+Converts TEX to PDF.  \code{tex2pdf} accepts the file names of TEX fragments. It reads those fragments, wraps them like documents and makes PDF files.
 }
 \examples{
 file <- file.path(tempdir(),'test.tex')

@@ -11,7 +11,7 @@ viewtex(x, delete = TRUE, latency = 1, png = FALSE, ...)
 
 \item{delete}{whether temporary pdf (_doc.pdf) should persist}
 
-\item{latency}{how many seconds to wait before deleting temporary pdf,}
+\item{latency}{how many seconds to wait before deleting temporary PDF,}
 
 \item{png}{view as png instead of pdf}
 

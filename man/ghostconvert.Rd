@@ -31,7 +31,7 @@ ghostconvert(x, y = file.path(gdir, out), gdir = dirname(x),
 
 \item{antialias}{font antialiasing}
 
-\item{resolution}{png pixel resolution}
+\item{resolution}{raster image resolution}
 
 \item{replace}{whether to delete \code{x} if successful}
 
@@ -43,7 +43,7 @@ ghostconvert(x, y = file.path(gdir, out), gdir = dirname(x),
 the name of the file created
 }
 \description{
-Call ghostscript, converting by default from pdf to png.
+Call Ghostscript, converting by default from PDF to PNG.
 }
 \examples{
 \dontrun{

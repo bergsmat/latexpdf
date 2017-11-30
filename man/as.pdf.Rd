@@ -32,7 +32,7 @@ Coerces to PDF. Generic, with methods for character, document, and data.frame.
 
 Coerces to PDF from document. Makes a system call to 'pdflatex'. Extra arguments ignored.
 
-Coerces character to document and then to pdf. Extra arguments passed to \code{\link{as.document.character}} and \code{\link{as.pdf.document}}.
+Coerces character to document and then to PDF. Extra arguments passed to \code{\link{as.document.character}} and \code{\link{as.pdf.document}}.
 }
 \section{Methods (by class)}{
 \itemize{

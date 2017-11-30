@@ -9,7 +9,7 @@
 \arguments{
 \item{x}{data.frame}
 
-\item{replace}{whether to delete the intermediate pdf if successful}
+\item{replace}{whether to delete the intermediate PDF if successful}
 
 \item{...}{passed to \code{\link{as.pdf.data.frame}} and to \code{\link{ghostconvert}}}
 }

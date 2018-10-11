@@ -17,9 +17,9 @@ as.tabular(x, ...)
   charjust = "left", numjust = "right", justify = ifelse(sapply(x,
   is.numeric), numjust, charjust), decimal.mark = getOption("OutDec"),
   colwidth = NA, paralign = "top", na = "", verbatim = ifelse(sapply(x,
-  is.numeric), TRUE, FALSE), escape = "#", trim = TRUE, source = NULL,
-  file = NULL, source.label = "source: ", file.label = "file: ",
-  basefile = FALSE, tabularEnvironment = "tabular",
+  is.numeric), TRUE, FALSE), escape = "#", reserve = TRUE, trim = TRUE,
+  source = NULL, file = NULL, source.label = "source: ",
+  file.label = "file: ", basefile = FALSE, tabularEnvironment = "tabular",
   footnote.size = "tiny", ...)
 
 \method{as.tabular}{table}(x, ...)
@@ -70,6 +70,8 @@ as.tabular(x, ...)
 \item{verbatim}{whether to use verbatim environment for numeric fields.  Makes sense for decimal justification; interacts with \code{trim} and \code{justify}.}
 
 \item{escape}{symbol used by `verb' command as delimiter.  A warning is issued if it is found in non-NA text.}
+
+\item{reserve}{substitute escape sequences for LaTeX \href{https://en.wikibooks.org/wiki/LaTeX/Basics#Reserved_Characters}{reserved} characters}
 
 \item{trim}{passed to the format command: true by default, so that alignment is the responsibility of just the tabular environment arguments}
 

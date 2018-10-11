@@ -20,8 +20,8 @@ as.document(x, ...)
   rowcolors = NULL, charjust = "left", numjust = "right",
   justify = ifelse(sapply(x, is.numeric), numjust, charjust), colwidth = NA,
   paralign = "top", na = "", verbatim = ifelse(sapply(x, is.numeric),
-  TRUE, FALSE), escape = "#", trim = TRUE, wide = NULL, long = NULL,
-  wider = 0, longer = 0, ...)
+  TRUE, FALSE), escape = "#", reserve = TRUE, trim = TRUE, wide = NULL,
+  long = NULL, wider = 0, longer = 0, ...)
 }
 \arguments{
 \item{x}{object to be converted, typically data.frame (paths of tex files for \code{tex2pdf} and \code{viewtex})}
@@ -69,6 +69,8 @@ as.document(x, ...)
 \item{verbatim}{whether to use verbatim environment for numeric fields.  Makes sense for decimal justification; interacts with \code{trim} and \code{justify}.}
 
 \item{escape}{symbol used by `verb' command as delimiter.  A warning is issued if it is found in non-NA text.}
+
+\item{reserve}{substitute escape sequences for LaTeX \href{https://en.wikibooks.org/wiki/LaTeX/Basics#Reserved_Characters}{reserved} characters}
 
 \item{trim}{passed to the format command: true by default, so that alignment is the responsibility of just the tabular environment arguments}
 

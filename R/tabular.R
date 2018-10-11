@@ -33,6 +33,7 @@ as.tabular <- function(x,...)UseMethod('as.tabular')
 #' @param na string to replace NA elements
 #' @param verbatim whether to use verbatim environment for numeric fields.  Makes sense for decimal justification; interacts with \code{trim} and \code{justify}.
 #' @param escape symbol used by `verb' command as delimiter.  A warning is issued if it is found in non-NA text.
+#' @param reserve substitute escape sequences for LaTeX \href{https://en.wikibooks.org/wiki/LaTeX/Basics#Reserved_Characters}{reserved} characters
 #' @param trim passed to the format command: true by default, so that alignment is the responsibility of just the tabular environment arguments
 #' @param source optional source attribution
 #' @param file optional file name
@@ -70,6 +71,7 @@ as.tabular.data.frame <- function(
   na='',
   verbatim=ifelse(sapply(x,is.numeric),TRUE,FALSE),
   escape='#',
+  reserve = TRUE,
   trim=TRUE,
   source=NULL,
   file=NULL,
@@ -164,6 +166,7 @@ as.tabular.data.frame <- function(
   sapply(names(x)[verbatim],function(nm)if(any(!is.na(x[[nm]]) & contains(escape,x[[nm]],fixed=TRUE)))warning(nm,'contains', escape))
   x[] <- lapply(seq_along(x),function(col)if(decimal[[col]])align.decimal(x[[col]],decimal.mark = decimal.mark)else format(x[[col]],trim=trim,decimal.mark = decimal.mark,...))
   x[] <- lapply(seq_along(x),function(col)sub('^ *NA *$',na[[col]],x[[col]]))
+  if(reserve) x <- reserve(x,...)
   x[] <- lapply(seq_along(x),function(col)if(verbatim[[col]])paste0('\\verb',escape,x[[col]],escape)else x[[col]])
   x <- as.matrix(x)
   x <- apply(x,1,row2tabular) #ready

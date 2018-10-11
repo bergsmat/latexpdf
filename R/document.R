@@ -17,39 +17,44 @@
 #' @param multirow multirow specification
 #' @param float float specification
 #' @param longtable longtable specification
+#' @param inputenc input encoding
+#' @param fontenc output encoding
 #' @param morePreamble additional preamble before beginning the document
 #' @param ... ignored
 #' @examples
 #' makePreamble()
 
 makePreamble <- function(
-	landscape=FALSE,
-	wide=if(landscape) 279.4 else 215.9,
-	long=if(landscape) 215.9 else 279.4,
-	geoLeft = '1mm',
-	geoRight = '1mm',
-	geoTop = '1mm',
-	geoBottom = '1mm',
-	documentclass = command('documentclass',args='article'),
-	xcolorPackage = command('usepackage',options=list('usenames','dvispnames','svgnames','table'),args='xcolor'),
-    	geometryPackage = command('usepackage',options=list(left=geoLeft,top=geoTop,bottom=geoBottom,right=geoRight),args='geometry'),
-	geometry = command('geometry',args=list(paste0('papersize=',paste0('{',wide,'mm',',',long,'mm}')))),
-	multirow = command('usepackage',args='multirow'),
-	float = command('usepackage',args='float'),
-	longtable = command('usepackage',args='longtable'),
-	morePreamble = NULL,
-	...
+  landscape=FALSE,
+  wide=if(landscape) 279.4 else 215.9,
+  long=if(landscape) 215.9 else 279.4,
+  geoLeft = '1mm',
+  geoRight = '1mm',
+  geoTop = '1mm',
+  geoBottom = '1mm',
+  documentclass = command('documentclass',args='article'),
+  xcolorPackage = command('usepackage',options=list('usenames','dvispnames','svgnames','table'),args='xcolor'),
+  geometryPackage = command('usepackage',options=list(left=geoLeft,top=geoTop,bottom=geoBottom,right=geoRight),args='geometry'),
+  geometry = command('geometry',args=list(paste0('papersize=',paste0('{',wide,'mm',',',long,'mm}')))),
+  multirow = command('usepackage',args='multirow'),
+  float = command('usepackage',args='float'),
+  longtable = command('usepackage',args='longtable'),
+  inputenc = command("usepackage", options="utf8", args="inputenc"),
+  fontenc = command("usepackage", options="T1", args="fontenc"),
+  morePreamble = NULL,
+  ...
 )c(
-	documentclass,
-	xcolorPackage,
-	geometryPackage,
-	geometry,
-	multirow,
-	float,
-	longtable,
-	morePreamble
+  documentclass,
+  xcolorPackage,
+  geometryPackage,
+  geometry,
+  multirow,
+  float,
+  longtable,
+  inputenc,
+  fontenc,
+  morePreamble
 )
-
 #' Coerce to LaTeX Document
 #'
 #' Coerces to LaTeX document.  Generic, with methods for character and data.frame.
@@ -116,6 +121,7 @@ as.document.character <- function(
 #' @param na string to replace NA elements
 #' @param verbatim whether to use verbatim environment for numeric fields.  Makes sense for decimal justification; interacts with \code{trim} and \code{justify}.
 #' @param escape symbol used by `verb' command as delimiter.  A warning is issued if it is found in non-NA text.
+#' @param reserve substitute escape sequences for LaTeX \href{https://en.wikibooks.org/wiki/LaTeX/Basics#Reserved_Characters}{reserved} characters
 #' @param trim passed to the format command: true by default, so that alignment is the responsibility of just the tabular environment arguments
 #' @param wide nominal page width in mm
 #' @param long nominal page length in mm
@@ -146,6 +152,7 @@ as.document.data.frame <- function(
 	  na = "",
 	  verbatim = ifelse(sapply(x, is.numeric), TRUE, FALSE),
 	  escape = "#",
+	  reserve = TRUE,
 	  trim = TRUE,
 	  wide = NULL,
 	  long = NULL,

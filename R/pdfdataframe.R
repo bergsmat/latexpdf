@@ -1,6 +1,12 @@
 #' Coerce to PDF from Data Frame
 #'
-#' Coerces data.frame to document and then to PDF. Extra arguments are passed to \code{\link{makePreamble}}.  \code{\link{as.document.data.frame}} will try to guess an appropriate width and length( \code{wide}, \code{long}) for the page, but you may need something \code{wider} or \code{longer}, especially if you adjust aesthetics.  Negative values for \code{wider} and \code{longer} are meaningful.
+#' Coerces data.frame to document and then to PDF.
+#' Extra arguments are passed to \code{\link{makePreamble}}.
+#' \code{\link{as.document.data.frame}} will try to guess an
+#' appropriate width and length( \code{wide}, \code{long})
+#' for the page, but you may need something \code{wider} or
+#' \code{longer}, especially if you adjust aesthetics.
+#' Negative values for \code{wider} and \code{longer} are meaningful.
 #' @export
 #' @seealso \code{\link{as.pdf.character}}
 #' @seealso \code{\link{as.pdf.document}}
@@ -27,6 +33,7 @@
 #' @param na string to replace NA elements
 #' @param verbatim whether to use verbatim environment for numeric fields.  Makes sense for decimal justification; interacts with \code{trim} and \code{justify}.
 #' @param escape symbol used by `verb' command as delimiter.  A warning is issued if it is found in non-NA text.
+#' @param reserve substitute escape sequences for LaTeX \href{https://en.wikibooks.org/wiki/LaTeX/Basics#Reserved_Characters}{reserved} characters
 #' @param trim passed to the format command: true by default, so that alignment is the responsibility of just the tabular environment arguments
 #' @param source optional source attribution
 #' @param file optional file name
@@ -50,7 +57,7 @@
 #' @param stem the stem of a file name (no extension)
 #' @param dir output directory
 #' @param clean whether to delete system files after pdf creation
-#' @param ... passed eventually to \code{\link{makePreamble}}
+#' @param ... passed eventually to \code{\link{makePreamble}} and \code{\link{reserve}}
 #' @examples
 #' \dontrun{as.pdf(head(Theoph))}
 
@@ -75,6 +82,7 @@ as.pdf.data.frame <- function(
   na='', # tabular.data.frame
   verbatim=ifelse(sapply(x,is.numeric),TRUE,FALSE), # tabular.data.frame
   escape='#', # tabular.data.frame
+  reserve = TRUE,
   trim=TRUE,  # tabular.data.frame
   source=NULL,  # tabular.data.frame
   file=NULL, # tabular.data.frame
@@ -98,7 +106,7 @@ as.pdf.data.frame <- function(
   stem = 'latexpdf-doc', # as.pdf.document
   dir = '.',# as.pdf.document
   clean = TRUE,# as.pdf.document
-  ... # passed to makePreamble
+  ... # passed to makePreamble, etc
 ){
   doc <- as.document(
     x,
@@ -138,7 +146,8 @@ as.pdf.data.frame <- function(
     thispagestyle = thispagestyle,
     pagestyle = pagestyle,
     prolog = prolog,
-    epilog = epilog
+    epilog = epilog,
+    ...
   )
-  as.pdf(doc, stem = stem, dir = dir, clean = clean)
+  as.pdf(doc, stem = stem, dir = dir, clean = clean, ...)
 }

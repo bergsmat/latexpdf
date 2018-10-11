@@ -16,6 +16,8 @@ makePreamble(landscape = FALSE, wide = if (landscape) 279.4 else 215.9,
   wide, "mm", ",", long, "mm}")))), multirow = command("usepackage", args =
   "multirow"), float = command("usepackage", args = "float"),
   longtable = command("usepackage", args = "longtable"),
+  inputenc = command("usepackage", options = "utf8", args = "inputenc"),
+  fontenc = command("usepackage", options = "T1", args = "fontenc"),
   morePreamble = NULL, ...)
 }
 \arguments{
@@ -46,6 +48,10 @@ makePreamble(landscape = FALSE, wide = if (landscape) 279.4 else 215.9,
 \item{float}{float specification}
 
 \item{longtable}{longtable specification}
+
+\item{inputenc}{input encoding}
+
+\item{fontenc}{output encoding}
 
 \item{morePreamble}{additional preamble before beginning the document}
 

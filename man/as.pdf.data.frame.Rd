@@ -12,13 +12,13 @@
   charjust = "left", numjust = "right", justify = ifelse(sapply(x,
   is.numeric), numjust, charjust), colwidth = NA, paralign = "top",
   na = "", verbatim = ifelse(sapply(x, is.numeric), TRUE, FALSE),
-  escape = "#", trim = TRUE, source = NULL, file = NULL,
-  source.label = "source: ", file.label = "file: ", basefile = FALSE,
-  tabularEnvironment = "tabular", footnote.size = "tiny", geoLeft = "1mm",
-  geoRight = "1mm", geoTop = "1mm", geoBottom = "1mm", wide = NULL,
-  long = NULL, wider = 0, longer = 0,
-  thispagestyle = command("thispagestyle", args = "empty"),
-  pagestyle = command("pagestyle", args = "empty"), prolog = NULL,
+  escape = "#", reserve = TRUE, trim = TRUE, source = NULL,
+  file = NULL, source.label = "source: ", file.label = "file: ",
+  basefile = FALSE, tabularEnvironment = "tabular",
+  footnote.size = "tiny", geoLeft = "1mm", geoRight = "1mm",
+  geoTop = "1mm", geoBottom = "1mm", wide = NULL, long = NULL,
+  wider = 0, longer = 0, thispagestyle = command("thispagestyle", args =
+  "empty"), pagestyle = command("pagestyle", args = "empty"), prolog = NULL,
   epilog = NULL, stem = "latexpdf-doc", dir = ".", clean = TRUE, ...)
 }
 \arguments{
@@ -61,6 +61,8 @@
 \item{verbatim}{whether to use verbatim environment for numeric fields.  Makes sense for decimal justification; interacts with \code{trim} and \code{justify}.}
 
 \item{escape}{symbol used by `verb' command as delimiter.  A warning is issued if it is found in non-NA text.}
+
+\item{reserve}{substitute escape sequences for LaTeX \href{https://en.wikibooks.org/wiki/LaTeX/Basics#Reserved_Characters}{reserved} characters}
 
 \item{trim}{passed to the format command: true by default, so that alignment is the responsibility of just the tabular environment arguments}
 
@@ -108,10 +110,16 @@
 
 \item{clean}{whether to delete system files after pdf creation}
 
-\item{...}{passed eventually to \code{\link{makePreamble}}}
+\item{...}{passed eventually to \code{\link{makePreamble}} and \code{\link{reserve}}}
 }
 \description{
-Coerces data.frame to document and then to PDF. Extra arguments are passed to \code{\link{makePreamble}}.  \code{\link{as.document.data.frame}} will try to guess an appropriate width and length( \code{wide}, \code{long}) for the page, but you may need something \code{wider} or \code{longer}, especially if you adjust aesthetics.  Negative values for \code{wider} and \code{longer} are meaningful.
+Coerces data.frame to document and then to PDF.
+Extra arguments are passed to \code{\link{makePreamble}}.
+\code{\link{as.document.data.frame}} will try to guess an
+appropriate width and length( \code{wide}, \code{long})
+for the page, but you may need something \code{wider} or
+\code{longer}, especially if you adjust aesthetics.
+Negative values for \code{wider} and \code{longer} are meaningful.
 }
 \examples{
 \dontrun{as.pdf(head(Theoph))}

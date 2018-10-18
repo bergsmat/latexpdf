@@ -82,6 +82,7 @@ as.tabular.data.frame <- function(
   footnote.size = 'tiny',
   ...
 ){
+  if(ncol(x) == 0) stop('need at least one column')
   #groom arguments
   # shall there be row group labels and column group labels?
   groupcols <- inherits(colgroups, 'character')
@@ -92,7 +93,7 @@ as.tabular.data.frame <- function(
   walls <- rep(walls, length.out = 2)
   rowgroups <- rep(rowgroups, length.out=nrow(x))
   colgroups <- rep(colgroups, length.out=ncol(x))
-  rowbreaks <- rep(rowbreaks, length.out=nrow(x)-1)
+  if(nrow(x)) rowbreaks <- rep(rowbreaks, length.out=nrow(x)-1)
   colbreaks <- rep(colbreaks, length.out=ncol(x)-1)
   if(!is.null(rowcolors))rowcolors <- rep(rowcolors, length.out=nrow(x))
   stopifnot(length(charjust)==1)
@@ -176,8 +177,9 @@ as.tabular.data.frame <- function(
   # we create an empty row to represent pre-header
   if(!is.null(rowcolors))x <- paste0('\\rowcolor{',rowcolors,'} ',x)
   x <- c('',if(groupcols) header2, header,x)
+  if(!length(rowgroups)) x <- c(x,'') # add dummy row as target for rules[[3]]
   oldbreaks <- rowbreaks
-  rowbreaks <- c(rules[[1]],if(groupcols) colgrouprule,rules[[2]], rowbreaks,rules[[3]])
+  rowbreaks <- c(rules[[1]],if(groupcols) colgrouprule, rules[[2]], if(length(rowgroups)) rowbreaks,rules[[3]])
   stopifnot(length(rowbreaks)==length(x))
   # the line end style depends on position in a rowgroup block.  Only end-of-block
   # may have a full line.

@@ -1,7 +1,7 @@
 Package: latexpdf
 Type: Package
 Title: Convert Tables to PDF or PNG
-Version: 0.1.4
+Version: 0.1.6
 Author: Tim Bergsma
 Maintainer: Tim Bergsma <bergsmat@gmail.com>
 Description: Converts table-like objects to stand-alone PDF or PNG.

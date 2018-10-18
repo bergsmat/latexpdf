@@ -60,6 +60,7 @@
 #' @param ... passed eventually to \code{\link{makePreamble}} and \code{\link{reserve}}
 #' @examples
 #' \dontrun{as.pdf(head(Theoph))}
+#' \dontrun{as.pdf(Theoph[0,])}
 
 as.pdf.data.frame <- function(
   x, # tabular.data.frame
@@ -127,6 +128,7 @@ as.pdf.data.frame <- function(
     na = na,
     verbatim = verbatim,
     escape = escape,
+    reserve = reserve,
     trim = trim,
     source = source,
     file = file,

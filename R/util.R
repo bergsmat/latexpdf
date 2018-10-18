@@ -126,6 +126,7 @@ nth <-
     nth(x = x, where = where, within = within, n = n - 1)
   }
 maxChar <-function (x){
+    if(!length(x)) return(0)
     x <- as.character(x)
     len <- nchar(x)
     max(len)

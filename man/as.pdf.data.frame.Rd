@@ -123,6 +123,7 @@ Negative values for \code{wider} and \code{longer} are meaningful.
 }
 \examples{
 \dontrun{as.pdf(head(Theoph))}
+\dontrun{as.pdf(Theoph[0,])}
 }
 \seealso{
 \code{\link{as.pdf.character}}

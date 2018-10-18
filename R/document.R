@@ -160,12 +160,14 @@ as.document.data.frame <- function(
 	  longer = 0,
 	  ...
 ){
+  if(ncol(x) == 0) stop('need at least one column')
   stopifnot(inherits(x,'data.frame'))
   rules <- rep(rules, length.out = 3)
   walls <- rep(walls, length.out = 2)
-  rowbreaks <- rep(rowbreaks, length.out = nrow(x) - 1)
+  if(nrow(x)) rowbreaks <- rep(rowbreaks, length.out = nrow(x) - 1)
   colbreaks <- rep(colbreaks, length.out = ncol(x) - 1)
   text <- maxChar(do.call(paste,fixedwidth.data.frame(x)))
+  if(!nrow(x)) text <- sum(nchar(names(x))) + length(x) - 1
   bars <- c(walls,colbreaks)
   bars <- sum(bars) + sum(bars[bars>1]-1)*4
   #bars[bars>1] - 1 gives the number of inter-bar gaps, which are about 4 times as wide as a bar.
@@ -197,6 +199,7 @@ as.document.data.frame <- function(
           na=na,
           verbatim=verbatim,
           escape=escape,
+          reserve=reserve,
           trim=trim,
           ...
   )

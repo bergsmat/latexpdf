@@ -8,8 +8,15 @@
 \usage{
 as.png(x, ...)
 
-\method{as.png}{document}(x, stem = "latexpdf-doc", dir = ".",
-  clean = TRUE, replace = TRUE, multipage = TRUE, ...)
+\method{as.png}{document}(
+  x,
+  stem = "latexpdf-doc",
+  dir = ".",
+  clean = TRUE,
+  replace = TRUE,
+  multipage = TRUE,
+  ...
+)
 
 \method{as.png}{character}(x, stem, ...)
 }

@@ -15,8 +15,11 @@
 The default method returns its argument.
 }
 \seealso{
-Other reserve: \code{\link{reserve.character}},
-  \code{\link{reserve.data.frame}},
-  \code{\link{reserve.factor}}, \code{\link{reserve.list}},
-  \code{\link{reserve}}
+Other reserve: 
+\code{\link{reserve.character}()},
+\code{\link{reserve.data.frame}()},
+\code{\link{reserve.factor}()},
+\code{\link{reserve.list}()},
+\code{\link{reserve}()}
 }
+\concept{reserve}

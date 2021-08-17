@@ -15,8 +15,11 @@
 Coerces to character and escapes reserved characters.
 }
 \seealso{
-Other reserve: \code{\link{reserve.character}},
-  \code{\link{reserve.data.frame}},
-  \code{\link{reserve.default}},
-  \code{\link{reserve.list}}, \code{\link{reserve}}
+Other reserve: 
+\code{\link{reserve.character}()},
+\code{\link{reserve.data.frame}()},
+\code{\link{reserve.default}()},
+\code{\link{reserve.list}()},
+\code{\link{reserve}()}
 }
+\concept{reserve}

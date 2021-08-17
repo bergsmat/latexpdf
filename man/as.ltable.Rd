@@ -9,10 +9,22 @@
 \usage{
 as.ltable(x, ...)
 
-\method{as.ltable}{data.frame}(x, caption = NULL, cap = caption,
-  cap.top = TRUE, label = NULL, options = "H", environments = "center",
-  source = NULL, file = NULL, source.label = "source: ",
-  file.label = "file: ", basefile = FALSE, footnote.size = "tiny", ...)
+\method{as.ltable}{data.frame}(
+  x,
+  caption = NULL,
+  cap = caption,
+  cap.top = TRUE,
+  label = NULL,
+  options = "H",
+  environments = "center",
+  source = NULL,
+  file = NULL,
+  source.label = "source: ",
+  file.label = "file: ",
+  basefile = FALSE,
+  footnote.size = "tiny",
+  ...
+)
 
 \method{as.ltable}{table}(x, ...)
 

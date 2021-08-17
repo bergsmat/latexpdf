@@ -15,8 +15,11 @@
 Applies \code{reserve} to the elements of a list.
 }
 \seealso{
-Other reserve: \code{\link{reserve.character}},
-  \code{\link{reserve.data.frame}},
-  \code{\link{reserve.default}},
-  \code{\link{reserve.factor}}, \code{\link{reserve}}
+Other reserve: 
+\code{\link{reserve.character}()},
+\code{\link{reserve.data.frame}()},
+\code{\link{reserve.default}()},
+\code{\link{reserve.factor}()},
+\code{\link{reserve}()}
 }
+\concept{reserve}

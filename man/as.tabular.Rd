@@ -9,18 +9,39 @@
 \usage{
 as.tabular(x, ...)
 
-\method{as.tabular}{data.frame}(x, rules = c(2, 1, 1), walls = 0,
-  grid = FALSE, rowgroups = factor(rownames(x)),
-  colgroups = factor(names(x)), rowbreaks = if (grid) breaks(rowgroups) else
-  0, colbreaks = if (grid) breaks(colgroups) else 0, rowgrouprule = 0,
-  colgrouprule = 0, rowcolors = NULL, rowgrouplabel = " ",
-  charjust = "left", numjust = "right", justify = ifelse(sapply(x,
-  is.numeric), numjust, charjust), decimal.mark = getOption("OutDec"),
-  colwidth = NA, paralign = "top", na = "", verbatim = ifelse(sapply(x,
-  is.numeric), TRUE, FALSE), escape = "#", reserve = TRUE, trim = TRUE,
-  source = NULL, file = NULL, source.label = "source: ",
-  file.label = "file: ", basefile = FALSE, tabularEnvironment = "tabular",
-  footnote.size = "tiny", ...)
+\method{as.tabular}{data.frame}(
+  x,
+  rules = c(2, 1, 1),
+  walls = 0,
+  grid = FALSE,
+  rowgroups = factor(rownames(x)),
+  colgroups = factor(names(x)),
+  rowbreaks = if (grid) breaks(rowgroups) else 0,
+  colbreaks = if (grid) breaks(colgroups) else 0,
+  rowgrouprule = 0,
+  colgrouprule = 0,
+  rowcolors = NULL,
+  rowgrouplabel = " ",
+  charjust = "left",
+  numjust = "right",
+  justify = ifelse(sapply(x, is.numeric), numjust, charjust),
+  decimal.mark = getOption("OutDec"),
+  colwidth = NA,
+  paralign = "top",
+  na = "",
+  verbatim = ifelse(sapply(x, is.numeric), TRUE, FALSE),
+  escape = "#",
+  reserve = TRUE,
+  trim = TRUE,
+  source = NULL,
+  file = NULL,
+  source.label = "source: ",
+  file.label = "file: ",
+  basefile = FALSE,
+  tabularEnvironment = "tabular",
+  footnote.size = "tiny",
+  ...
+)
 
 \method{as.tabular}{table}(x, ...)
 

@@ -15,8 +15,11 @@ reserve(x, ...)
 Escapes LaTeX reserved characters.  Generic, with default, character, and data.frame methods.
 }
 \seealso{
-Other reserve: \code{\link{reserve.character}},
-  \code{\link{reserve.data.frame}},
-  \code{\link{reserve.default}},
-  \code{\link{reserve.factor}}, \code{\link{reserve.list}}
+Other reserve: 
+\code{\link{reserve.character}()},
+\code{\link{reserve.data.frame}()},
+\code{\link{reserve.default}()},
+\code{\link{reserve.factor}()},
+\code{\link{reserve.list}()}
 }
+\concept{reserve}

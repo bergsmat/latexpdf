@@ -4,8 +4,15 @@
 \alias{tex2png}
 \title{Convert TEX to PNG}
 \usage{
-tex2png(x, stem = NULL, dir = NULL, clean = TRUE, onefile = FALSE,
-  replace = TRUE, ...)
+tex2png(
+  x,
+  stem = NULL,
+  dir = NULL,
+  clean = TRUE,
+  onefile = FALSE,
+  replace = TRUE,
+  ...
+)
 }
 \arguments{
 \item{x}{vector of file names}

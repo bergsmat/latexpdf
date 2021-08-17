@@ -4,9 +4,13 @@
 \alias{reserve.character}
 \title{Escape LaTeX Reserved Characters for Character Objects}
 \usage{
-\method{reserve}{character}(x, target = c("#", "$", "\%", "^", "&", "_", "{",
-  "}", "~", "\\\\"), replacement = c("\\\\#", "\\\\$", "\\\\\%", "\\\\^{}",
-  "\\\\&", "\\\\_", "\\\\{", "\\\\}", "\\\\~{}", "\\\\textbackslash{}"), ...)
+\method{reserve}{character}(
+  x,
+  target = c("#", "$", "\%", "^", "&", "_", "{", "}", "~", "\\\\"),
+  replacement = c("\\\\#", "\\\\$", "\\\\\%", "\\\\^{}", "\\\\&", "\\\\_", "\\\\{",
+    "\\\\}", "\\\\~{}", "\\\\textbackslash{}"),
+  ...
+)
 }
 \arguments{
 \item{x}{character}
@@ -21,8 +25,11 @@
 Escapes LaTeX reserved characters as suggested by \url{https://en.wikibooks.org/wiki/LaTeX/Basics#Reserved_Characters}.
 }
 \seealso{
-Other reserve: \code{\link{reserve.data.frame}},
-  \code{\link{reserve.default}},
-  \code{\link{reserve.factor}}, \code{\link{reserve.list}},
-  \code{\link{reserve}}
+Other reserve: 
+\code{\link{reserve.data.frame}()},
+\code{\link{reserve.default}()},
+\code{\link{reserve.factor}()},
+\code{\link{reserve.list}()},
+\code{\link{reserve}()}
 }
+\concept{reserve}

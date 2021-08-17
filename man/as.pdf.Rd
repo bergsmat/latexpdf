@@ -8,8 +8,16 @@
 \usage{
 as.pdf(x, ...)
 
-\method{as.pdf}{document}(x, stem = "latexpdf-doc", dir = ".",
-  clean = TRUE, ...)
+\method{as.pdf}{document}(
+  x,
+  stem = "latexpdf-doc",
+  dir = ".",
+  clean = TRUE,
+  ignore.stdout = FALSE,
+  ignore.stderr = FALSE,
+  show.output.on.console = TRUE,
+  ...
+)
 
 \method{as.pdf}{character}(x, stem, ...)
 }
@@ -23,6 +31,12 @@ as.pdf(x, ...)
 \item{dir}{output directory}
 
 \item{clean}{whether to delete system files after pdf creation}
+
+\item{ignore.stdout}{passed to \code{\link{system}}}
+
+\item{ignore.stderr}{passed to \code{\link{system}}}
+
+\item{show.output.on.console}{passed to \code{\link{system}}}
 }
 \value{
 the output file path (invisible)

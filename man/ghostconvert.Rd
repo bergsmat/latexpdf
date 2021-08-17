@@ -4,11 +4,23 @@
 \alias{ghostconvert}
 \title{Call Ghostscript.}
 \usage{
-ghostconvert(x, y = file.path(gdir, out), gdir = dirname(x),
-  out = sub("\\\\.[^.]+$", paste0(if (multipage) multifix else NULL, ".",
-  suffix), basename(x)), gs_cmd = "", device = "pngalpha",
-  multipage = FALSE, multifix = "-\%03d", suffix = "png", antialias = 4,
-  resolution = 300, replace = TRUE, other = "", ...)
+ghostconvert(
+  x,
+  y = file.path(gdir, out),
+  gdir = dirname(x),
+  out = sub("\\\\.[^.]+$", paste0(if (multipage) multifix else NULL, ".", suffix),
+    basename(x)),
+  gs_cmd = "",
+  device = "pngalpha",
+  multipage = FALSE,
+  multifix = "-\%03d",
+  suffix = "png",
+  antialias = 4,
+  resolution = 300,
+  replace = TRUE,
+  other = "",
+  ...
+)
 }
 \arguments{
 \item{x}{path for file to be converted}

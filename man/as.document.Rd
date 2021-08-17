@@ -8,20 +8,42 @@
 \usage{
 as.document(x, ...)
 
-\method{as.document}{character}(x, preamble = makePreamble(...),
+\method{as.document}{character}(
+  x,
+  preamble = makePreamble(...),
   thispagestyle = command("thispagestyle", args = "empty"),
-  pagestyle = command("pagestyle", args = "empty"), prolog = NULL,
-  epilog = NULL, ...)
+  pagestyle = command("pagestyle", args = "empty"),
+  prolog = NULL,
+  epilog = NULL,
+  ...
+)
 
-\method{as.document}{data.frame}(x, rules = c(2, 1, 1), walls = 0,
-  grid = FALSE, rowgroups = factor(rownames(x)),
-  colgroups = factor(names(x)), rowbreaks = if (grid) breaks(rowgroups, ...)
-  else 0, colbreaks = if (grid) breaks(colgroups, ...) else 0,
-  rowcolors = NULL, charjust = "left", numjust = "right",
-  justify = ifelse(sapply(x, is.numeric), numjust, charjust), colwidth = NA,
-  paralign = "top", na = "", verbatim = ifelse(sapply(x, is.numeric),
-  TRUE, FALSE), escape = "#", reserve = TRUE, trim = TRUE, wide = NULL,
-  long = NULL, wider = 0, longer = 0, ...)
+\method{as.document}{data.frame}(
+  x,
+  rules = c(2, 1, 1),
+  walls = 0,
+  grid = FALSE,
+  rowgroups = factor(rownames(x)),
+  colgroups = factor(names(x)),
+  rowbreaks = if (grid) breaks(rowgroups, ...) else 0,
+  colbreaks = if (grid) breaks(colgroups, ...) else 0,
+  rowcolors = NULL,
+  charjust = "left",
+  numjust = "right",
+  justify = ifelse(sapply(x, is.numeric), numjust, charjust),
+  colwidth = NA,
+  paralign = "top",
+  na = "",
+  verbatim = ifelse(sapply(x, is.numeric), TRUE, FALSE),
+  escape = "#",
+  reserve = TRUE,
+  trim = TRUE,
+  wide = NULL,
+  long = NULL,
+  wider = 0,
+  longer = 0,
+  ...
+)
 }
 \arguments{
 \item{x}{object to be converted, typically data.frame (paths of tex files for \code{tex2pdf} and \code{viewtex})}

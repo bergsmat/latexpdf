@@ -4,21 +4,29 @@
 \alias{makePreamble}
 \title{Make a Preamble for a LaTeX Document}
 \usage{
-makePreamble(landscape = FALSE, wide = if (landscape) 279.4 else 215.9,
-  long = if (landscape) 215.9 else 279.4, geoLeft = "1mm",
-  geoRight = "1mm", geoTop = "1mm", geoBottom = "1mm",
+makePreamble(
+  landscape = FALSE,
+  wide = if (landscape) 279.4 else 215.9,
+  long = if (landscape) 215.9 else 279.4,
+  geoLeft = "1mm",
+  geoRight = "1mm",
+  geoTop = "1mm",
+  geoBottom = "1mm",
   documentclass = command("documentclass", args = "article"),
-  xcolorPackage = command("usepackage", options = list("usenames",
-  "dvispnames", "svgnames", "table"), args = "xcolor"),
-  geometryPackage = command("usepackage", options = list(left = geoLeft, top =
-  geoTop, bottom = geoBottom, right = geoRight), args = "geometry"),
-  geometry = command("geometry", args = list(paste0("papersize=", paste0("{",
-  wide, "mm", ",", long, "mm}")))), multirow = command("usepackage", args =
-  "multirow"), float = command("usepackage", args = "float"),
+  xcolorPackage = command("usepackage", options = list("usenames", "dvispnames",
+    "svgnames", "table"), args = "xcolor"),
+  geometryPackage = command("usepackage", options = list(left = geoLeft, top = geoTop,
+    bottom = geoBottom, right = geoRight), args = "geometry"),
+  geometry = command("geometry", args = list(paste0("papersize=", paste0("{", wide,
+    "mm", ",", long, "mm}")))),
+  multirow = command("usepackage", args = "multirow"),
+  float = command("usepackage", args = "float"),
   longtable = command("usepackage", args = "longtable"),
   inputenc = command("usepackage", options = "utf8", args = "inputenc"),
   fontenc = command("usepackage", options = "T1", args = "fontenc"),
-  morePreamble = NULL, ...)
+  morePreamble = NULL,
+  ...
+)
 }
 \arguments{
 \item{landscape}{if TRUE, default orientation is `landscape' not `portrait'}

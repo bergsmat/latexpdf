@@ -18,6 +18,9 @@ as.pdf <- function(x,...)UseMethod('as.pdf')
 #' @param stem the stem of a file name (no extension)
 #' @param dir output directory
 #' @param clean whether to delete system files after pdf creation
+#' @param ignore.stdout passed to \code{\link{system}}
+#' @param ignore.stderr passed to \code{\link{system}}
+#' @param show.output.on.console passed to \code{\link{system}}
 #' @return the output file path (invisible)
 
 as.pdf.document <- function(
@@ -25,6 +28,9 @@ as.pdf.document <- function(
   stem = 'latexpdf-doc',
   dir='.',
   clean=TRUE,
+  ignore.stdout = FALSE,
+  ignore.stderr = FALSE,
+  show.output.on.console = TRUE,
   ...
 ){
   if(missing(stem))stop('a file stem (no extension) must be provided')
@@ -38,7 +44,7 @@ as.pdf.document <- function(
   expects <- file.path(dir,hopeful)
   writeLines(x,outpath)
   cmd <- paste0('pdflatex -output-directory=',dir,' ',outpath)
-  result <- tryCatch(error = function(e)e, system(cmd))
+  result <- tryCatch(error = function(e)e, system(cmd, ignore.stdout = ignore.stdout, ignore.stderr = ignore.stderr, show.output.on.console =  show.output.on.console))
   variants <- paste0(stem,c('.tex','.log','.aux','.out'))
   possibles <- file.path(dir,variants)
   actuals <- possibles[file.exists(possibles)]

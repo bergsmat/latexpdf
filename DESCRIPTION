@@ -1,7 +1,7 @@
 Package: latexpdf
 Type: Package
 Title: Convert Tables to PDF or PNG
-Version: 0.1.7
+Version: 0.1.8
 Author: Tim Bergsma
 Maintainer: Tim Bergsma <bergsmat@gmail.com>
 Description: Converts table-like objects to stand-alone PDF or PNG.
@@ -12,7 +12,7 @@ Description: Converts table-like objects to stand-alone PDF or PNG.
  available via mid-level functions, e.g. as.tabular(). See also 
  'package?latexpdf'. Support for PNG is experimental; see
  'as.png.data.frame'. Adapted from 'metrumrg' 
- <http://r-forge.r-project.org/R/?group_id=1215>.
+ <https://r-forge.r-project.org/R/?group_id=1215>.
  Requires a compatible installation of 'pdflatex',
  e.g. <https://miktex.org/>.
 License: GPL-3

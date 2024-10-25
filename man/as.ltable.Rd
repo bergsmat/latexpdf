@@ -79,13 +79,13 @@ Extra arguments(\dots) are passed to \code{\link{as.tabular}}.
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{data.frame}: data.frame method
+\item \code{as.ltable(data.frame)}: data.frame method
 
-\item \code{table}: table method
+\item \code{as.ltable(table)}: table method
 
-\item \code{matrix}: matrix method
+\item \code{as.ltable(matrix)}: matrix method
+
 }}
-
 \examples{
 as.ltable(head(Theoph))
 as.ltable(table(1:3,4:6))

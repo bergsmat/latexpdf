@@ -26,9 +26,11 @@ invisible vector of paths to created files
 Converts TEX to PDF.  \code{tex2pdf} accepts the file names of TEX fragments. It reads those fragments, wraps them like documents and makes PDF files.
 }
 \examples{
+\dontrun{
 file <- file.path(tempdir(),'test.tex')
 writeLines(as.ltable(head(Theoph)), file)
 tex2pdf(file)
+}
 }
 \seealso{
 \code{\link{as.pdf.character}}

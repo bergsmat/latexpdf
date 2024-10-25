@@ -50,11 +50,11 @@ Coerces character to document and then to PDF. Extra arguments passed to \code{\
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{document}: document method
+\item \code{as.pdf(document)}: document method
 
-\item \code{character}: character method
+\item \code{as.pdf(character)}: character method
+
 }}
-
 \seealso{
 \code{\link{as.pdf.character}}
 

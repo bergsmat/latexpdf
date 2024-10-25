@@ -18,4 +18,4 @@ Description: Converts table-like objects to stand-alone PDF or PNG.
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.1.1
+RoxygenNote: 7.2.3

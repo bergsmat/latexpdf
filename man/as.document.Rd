@@ -120,11 +120,11 @@ Coerces to LaTeX document from data.frame.
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{character}: character method
+\item \code{as.document(character)}: character method
 
-\item \code{data.frame}: data.frame method
+\item \code{as.document(data.frame)}: data.frame method
+
 }}
-
 \examples{
 as.document(head(Theoph))
 }

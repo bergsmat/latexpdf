@@ -23,6 +23,8 @@
 \usepackage{graphicx}
 \usepackage{tocbibind}
 \usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+% tinytex::parse_packages(files = 'upgreek.sty')
+% tinytex::tlmgr_install('was')
 \usepackage{upgreek}
 \usepackage{textpos}
 \usepackage{relsize}

@@ -79,9 +79,11 @@ as.pdf.character <- function(x,stem,...)as.pdf(as.document(x,...),stem=stem,...)
 #' @return invisible vector of paths to created files
 #'
 #' @examples
+#' \dontrun{
 #' file <- file.path(tempdir(),'test.tex')
 #' writeLines(as.ltable(head(Theoph)), file)
 #' tex2pdf(file)
+#' }
 tex2pdf <- function(
   x,
   stem=NULL,

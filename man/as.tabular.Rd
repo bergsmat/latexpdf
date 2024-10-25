@@ -124,13 +124,13 @@ Coerces to tabular from matrix.
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{data.frame}: data.frame method
+\item \code{as.tabular(data.frame)}: data.frame method
 
-\item \code{table}: table method
+\item \code{as.tabular(table)}: table method
 
-\item \code{matrix}: matrix method
+\item \code{as.tabular(matrix)}: matrix method
+
 }}
-
 \examples{
 as.tabular(head(Theoph))
 as.tabular(table(1:3,4:6))

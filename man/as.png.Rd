@@ -44,11 +44,11 @@ Coerces character to document, PDF, and then PNG. Extra arguments passed to \cod
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{document}: document method
+\item \code{as.png(document)}: document method
 
-\item \code{character}: character method
+\item \code{as.png(character)}: character method
+
 }}
-
 \seealso{
 \code{\link{as.png.character}}
 

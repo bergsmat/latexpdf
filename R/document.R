@@ -33,7 +33,10 @@ makePreamble <- function(
   geoTop = '1mm',
   geoBottom = '1mm',
   documentclass = command('documentclass',args='article'),
-  xcolorPackage = command('usepackage',options=list('usenames','dvispnames','svgnames','table'),args='xcolor'),
+  xcolorPackage = command('usepackage',options=list(
+   # 'usenames', 2023-12-18 usenames obsolete
+    'dvipsnames', 
+    'svgnames','table'),args='xcolor'),
   geometryPackage = command('usepackage',options=list(left=geoLeft,top=geoTop,bottom=geoBottom,right=geoRight),args='geometry'),
   geometry = command('geometry',args=list(paste0('papersize=',paste0('{',wide,'mm',',',long,'mm}')))),
   multirow = command('usepackage',args='multirow'),
